@@ -34,7 +34,9 @@ const App = () => {
   const { onCopy: onCopyEmail } = useClipboard(
     leads[currentIndex]?.email || ""
   );
-  const { onCopy: onCopyBody } = useClipboard(currentBody);
+  const { onCopy: onCopyBody } = useClipboard(currentBody, {
+    format: 'text/plain'
+  });
 
   const showToast = (title) => {
     toast({
@@ -233,6 +235,7 @@ const App = () => {
                       isReadOnly
                       minHeight="200px"
                       bg="gray.100"
+                      whiteSpace="pre-wrap"
                     />
                     <Flex justifyContent="flex-end" mt={2}>
                       <CopyButton onClick={onCopyBody}>Copy</CopyButton>
